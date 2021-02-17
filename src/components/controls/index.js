@@ -12,7 +12,7 @@ export const controlsView = props =>
     ? h(commandEditor, props)
     : h('div', { class: styles.controls }, [
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'backgroundCheckbox' }, 'Background:'),
+          h('label', { class: styles.controlLabel, for: 'backgroundCheckbox' }, 'Warna Latar'),
           h('input', {
             type: 'checkbox',
             checked: props.background,
@@ -37,7 +37,7 @@ export const controlsView = props =>
           })
         ]),
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'titlebarCheckbox' }, 'Title bar:'),
+          h('label', { class: styles.controlLabel, for: 'titlebarCheckbox' }, 'Bilah judul'),
           h('input', {
             type: 'checkbox',
             checked: props.titleBar,
@@ -45,13 +45,14 @@ export const controlsView = props =>
             id: 'titlebarCheckbox'
           }),
           h('input', {
+            type: 'text',
             placeholder: 'Title',
             title: 'Title bar text',
             value: props.title,
             oninput: props.updateTitle,
             disabled: !props.titleBar
           }),
-          h('label', { class: styles.controlLabelSub, for: 'buttonsCheckbox' }, 'Buttons:'),
+          h('label', { class: styles.controlLabelSub, for: 'buttonsCheckbox' }, 'Tombol'),
           h('input', {
             type: 'checkbox',
             checked: props.windowButtons,
@@ -60,8 +61,8 @@ export const controlsView = props =>
           })
         ]),
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'promptInput' }, 'Prompt:'),
-          h('input', { placeholder: 'Prompt', value: props.prompt, oninput: props.updatePrompt, id: 'promptInput' }),
+          h('label', { class: styles.controlLabel, for: 'promptInput' }, 'Prompt'),
+          h('input', { style:'max-width:150px', type: 'text',placeholder: 'Prompt', value: props.prompt, oninput: props.updatePrompt, id: 'promptInput' }),
           h('input', {
             type: 'color',
             placeholder: 'Prompt color',
@@ -71,23 +72,25 @@ export const controlsView = props =>
           })
         ]),
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'widthInput' }, 'Width:'),
+          h('label', { class: styles.controlLabel, for: 'widthInput' }, 'Lebar (px)'),
           h('input', {
             placeholder: 'Width',
             type: 'number',
             min: 1,
+            class:'maxWidth',
             value: props.width,
             oninput: props.updateWidth,
             onkeypress: numbersOnly,
             id: 'widthInput'
           })
-        ]),
-        h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'heightInput' }, 'Height:'),
+        //]),
+        //h('div', { class: styles.control }, [
+         , h('label', { class: styles.controlLabel, for: 'heightInput' }, 'Tinggi (px)'),
           h('input', {
             placeholder: 'Height',
             type: 'number',
             min: 1,
+            class:'maxWidth',
             value: props.height,
             oninput: props.updateHeight,
             onkeypress: numbersOnly,
@@ -95,10 +98,11 @@ export const controlsView = props =>
           })
         ]),
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel, for: 'speedInput' }, 'Speed:'),
+        ,  h('label', { class: styles.controlLabel, for: 'speedInput' }, 'Kecepatan'),
           h('input', {
             placeholder: 'Speed',
             type: 'number',
+            class:'maxWidth',
             min: 1,
             value: props.speed,
             oninput: props.updateSpeed,
@@ -107,11 +111,11 @@ export const controlsView = props =>
           })
         ]),
         h('div', { class: styles.control }, [
-          h('label', { class: styles.controlLabel }, 'Content:'),
-          h('button', { onclick: props.toggleEditingCommands }, 'Edit...'),
-          h('button', { onclick: props.restart }, 'Restart'),
-          h('select', { onchange: props.updateDemo, title: 'Demos' }, [
-            h('option', { disabled: true, selected: true, hidden: true, value: '' }, 'Or select a demo'),
+          h('label', { class: styles.controlLabel }, 'Konten'),
+          h('button', { onclick: props.toggleEditingCommands}, 'Sunting'),
+          h('button', { style:'color: #238dd9;background-color: transparent; border:1px solid #238dd9;', onclick: props.restart }, 'Awal'),
+          h('select', { onchange: props.updateDemo, title: 'Contoh' }, [
+            h('option', { disabled: true, selected: true, hidden: true, value: '' }, 'atau pilih dari contoh'),
             ...Object.keys(demos).map(name =>
               h('option', { value: name }, name.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase())
             )
@@ -119,7 +123,7 @@ export const controlsView = props =>
         ]),
         h('hr', { class: styles.divider }),
         h('div', { class: [styles.control, props.isExporting && styles.disabled].filter(Boolean).join(' ') }, [
-          h('label', { class: styles.controlLabel }, 'Export as:'),
+          h('label', { class: styles.controlLabel }, 'Ekspor ke'),
           h('input', {
             type: 'radio',
             value: 'svg',
@@ -137,7 +141,8 @@ export const controlsView = props =>
             name: 'exportType',
             onchange: props.updateExportType
           }),
-          h('label', { for: 'exportTypeHtml', class: styles.exportOptLabel }, 'HTML'),
+          h('label', { for: 'exportTypeHtml', class: styles.exportOptLabel }, 'HTML'),          
+          /*
           h('input', {
             type: 'radio',
             value: 'gif',
@@ -150,8 +155,9 @@ export const controlsView = props =>
             'GIF',
             h('span', { class: styles.alpha }, '(alpha)')
           ]),
+          */
           h('div', { class: styles.exportActions }, [
-            h('button', { onclick: props.export }, props.isExporting ? 'Exporting...' : 'Export')
+            h('button', { onclick: props.export }, props.isExporting ? 'Sedang mengekspor...' : 'Ekpor')
           ])
         ])
       ])

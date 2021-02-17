@@ -28,6 +28,6 @@ function save(props) {
 export const commandEditor = props =>
   h('div', { class: styles.commandEditor }, [
     h('div', { class: styles.code }, [h('div', { oncreate: el => setupCodeEditor(el, props.commands) })]),
-    h('button', { onclick: () => save(props) }, 'Save'),
-    h('button', { onclick: props.toggleEditingCommands }, 'Cancel')
+    h('button', { onclick: () => save(props) }, 'Simpan'),
+    h('button', { style:'color: #238dd9;background-color: transparent; border:1px solid #238dd9;', onclick: props.toggleEditingCommands }, 'Batal')
   ])

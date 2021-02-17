@@ -6,13 +6,13 @@ import * as demos from './demos'
 const state = {
   // Terminal state
   background: true,
-  bgColor1: '#40bfbf',
-  bgColor2: '#4095bf',
+  bgColor1: '#FF6822',
+  bgColor2: '#FF9D40',
   titleBar: true,
   windowButtons: true,
-  title: '~/',
+  title: '~/terpal',
   prompt: '~$',
-  promptColor: '#5ed7ff',
+  promptColor: '#FF6A00',
   width: 780,
   height: 440,
   speed: 1,

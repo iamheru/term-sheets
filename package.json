@@ -1,9 +1,9 @@
 {
-  "name": "term-sheets",
+  "name": "terpal",
   "version": "1.0.0",
-  "description": "Create animated terminal presentations. Export as SVG, animated GIF, or HTML+CSS",
-  "author": "Garth Poitras <garth22@gmail.com>",
-  "repository": "https://github.com/neatsoftware/term-sheets",
+  "description": "Penghasil terminal palsu beranimasi. Ekspor menjadi SVG atau HTML + CSS",
+  "author": "Heru Hermawan <aingtehheru@gmail.com>",
+  "repository": "nyusul",
   "license": "MIT",
   "scripts": {
     "start": "parcel src/index.html --no-cache",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "codemirror": "^5.40.2",
+    "deasync": "^0.1.21",
     "gifshot": "^0.4.5",
     "hyperapp": "^1.2.9"
   },
